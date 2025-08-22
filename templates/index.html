@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="content">
+
+    <h1>Просмотр заказов</h1>
+    <form method="get">
+        <input name="uid">
+        <br>
+        <button type="submit">Find Order</button>
+    </form>
+
+    <div class="order">
+        <h3>Order</h3>
+        <table>
+            <tr>
+                <td>Order UID</td>
+                <td>{{.OrderUID}}</td>
+            </tr>
+            <tr>
+                <td>Track number</td>
+                <td>{{.TrackNumber}}</td>
+            </tr>
+            <tr>
+                <td>Entry</td>
+                <td>{{.Entry}}</td>
+            </tr>
+            <tr>
+                <td>Locale</td>
+                <td>{{.Locale}}</td>
+            </tr>
+            <tr>
+                <td>Internal Signature</td>
+                <td>{{.InternalSignature}}</td>
+            </tr>
+            <tr>
+                <td>Customer ID</td>
+                <td>{{.CustomerID}}</td>
+            </tr>
+            <tr>
+                <td>Delivery Service</td>
+                <td>{{.DeliveryService}}</td>
+            </tr>
+            <tr>
+                <td>Shard Key</td>
+                <td>{{.ShardKey}}</td>
+            </tr>
+            <tr>
+                <td>SM ID</td>
+                <td>{{.SmID}}</td>
+            </tr>
+            <tr>
+                <td>Date Created</td>
+                <td>{{.DateCreated}}</td>
+            </tr>
+            <tr>
+                <td>OOF Shard</td>
+                <td>{{.OofShard}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="delivery">
+        <h3>Delivery</h3>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>{{.Delivery.Name}}</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>{{.Delivery.Phone}}</td>
+            </tr>
+            <tr>
+                <td>Zip</td>
+                <td>{{.Delivery.Zip}}</td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>{{.Delivery.City}}</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>{{.Delivery.Address}}</td>
+            </tr>
+            <tr>
+                <td>Region</td>
+                <td>{{.Delivery.Region}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{.Delivery.Email}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="pay">
+        <h3>Payment</h3>
+        <table>
+            <tr>
+                <td>Transaction</td>
+                <td>{{.Payment.Transaction}}</td>
+            </tr>
+            <tr>
+                <td>Request ID</td>
+                <td>{{.Payment.RequestID}}</td>
+            </tr>
+            <tr>
+                <td>Currency</td>
+                <td>{{.Payment.Currency}}</td>
+            </tr>
+            <tr>
+                <td>Provider</td>
+                <td>{{.Payment.Provider}}</td>
+            </tr>
+            <tr>
+                <td>Amount</td>
+                <td>{{.Payment.Amount}}</td>
+            </tr>
+            <tr>
+                <td>Payment DT</td>
+                <td>{{.Payment.PaymentDT}}</td>
+            </tr>
+            <tr>
+                <td>Bank</td>
+                <td>{{.Payment.Bank}}</td>
+            </tr>
+            <tr>
+                <td>Delivery Cost</td>
+                <td>{{.Payment.DeliveryCost}}</td>
+            </tr>
+            <tr>
+                <td>Goods Total</td>
+                <td>{{.Payment.GoodsTotal}}</td>
+            </tr>
+            <tr>
+                <td>Custom Fee</td>
+                <td>{{.Payment.CustomFee}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="items">
+        <h3>Items</h3>
+        {{range .Items}}
+            <div class="item">
+                <table>
+                    <tr>
+                        <td>ChrtID</td>
+                        <td>{{.ChrtID}}</td>
+                    </tr>
+                    <tr>
+                        <td>Трэк номер</td>
+                        <td>{{.TrackNumber}}</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>{{.Price}}</td>
+                    </tr>
+                    <tr>
+                        <td>RID</td>
+                        <td>{{.RID}}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{.Name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Sale</td>
+                        <td>{{.Sale}}</td>
+                    </tr>
+                    <tr>
+                        <td>Size</td>
+                        <td>{{.Size}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Price</td>
+                        <td>{{.TotalPrice}}</td>
+                    </tr>
+                    <tr>
+                        <td>NmID</td>
+                        <td>{{.NmID}}</td>
+                    </tr>
+                    <tr>
+                        <td>Brand</td>
+                        <td>{{.Brand}}</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>{{.Status}}</td>
+                    </tr>
+                </table>
+            </div>
+        {{end}}
+    </div>
+
+</div>
+</body>
+</html>
