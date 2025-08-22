@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"go_server_l0/api"
+	"go_server_l0/internal/config"
 	"go_server_l0/internal/db"
 	"go_server_l0/internal/kafkaservice"
 	"go_server_l0/internal/mapper"
@@ -20,8 +21,7 @@ const apiPrefixV1 = "/api/v1"
 
 func main() {
 	// init DB
-	var dbUrl = "postgres://user:password@localhost:5432/db"
-	var appDb, err = db.ConnectToPGSQL(dbUrl)
+	var appDb, err = db.ConnectToPGSQL(config.DefaultConfig.DbUrl)
 
 	if err != nil {
 		panic("DB connection error " + err.Error())
@@ -33,9 +33,9 @@ func main() {
 
 	// init kafka
 	kafkaService, err := kafkaservice.ConnectToKafks(
-		[]string{"localhost:29092"},
-		"orders",
-		"go-reader",
+		config.DefaultConfig.Brokers,
+		config.DefaultConfig.Topic,
+		config.DefaultConfig.GroupId,
 		context.Background())
 
 	if err != nil {
@@ -69,10 +69,10 @@ func main() {
 	// end init Kafka
 
 	// templates
-	indexTmpl := template.Must(template.ParseFiles("templates/index.html"))
+	indexTmpl := template.Must(template.ParseFiles(config.DefaultConfig.IndexTemplate))
 
 	// static
-	fs := http.FileServer(http.Dir("static/"))
+	fs := http.FileServer(http.Dir(config.DefaultConfig.StaticDir))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	loadOrder := func(query url.Values, ctx context.Context) (api.Order, error) {
@@ -154,6 +154,6 @@ func main() {
 	})
 
 	log.Println("Starting server")
-	http.ListenAndServe(":8000", nil)
+	http.ListenAndServe(config.DefaultConfig.Addr, nil)
 	log.Println("Finished")
 }
