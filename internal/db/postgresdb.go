@@ -12,6 +12,19 @@ type PGSQL struct {
 	url    string
 }
 
+// GetUIDs implements CachableDB.
+func (p *PGSQL) GetUIDs(ctx context.Context, limit int32) ([]string, error) {
+	var uids []string
+	uidRows, err := p.dbpool.Query(ctx, "SELECT order_uid FROM orders LIMIT $1", limit)
+
+	if err != nil {
+		return nil, err
+	}
+
+	uids, err = pgx.CollectRows(uidRows, pgx.RowTo[string])
+	return uids, err
+}
+
 // findById implements DB.
 func (p PGSQL) FindByUID(ctx context.Context, uid string) (Order, Delivery, Payment, []Item, error) {
 	var order Order
@@ -114,7 +127,7 @@ func (p *PGSQL) Close() error {
 	return nil
 }
 
-func ConnectToPGSQL(dbUrl string) (DB, error) {
+func ConnectToPGSQL(dbUrl string) (CachableDB, error) {
 	dbpool, err := pgxpool.New(context.Background(), dbUrl)
 
 	if err != nil {

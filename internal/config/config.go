@@ -8,9 +8,10 @@ type AppConfig struct {
 	StaticDir     string
 	IndexTemplate string
 	Addr          string
+	PreloadLimit  int32
 }
 
-var DefaultConfig = AppConfig{
+var defaultConfig = AppConfig{
 	DbUrl:         "postgres://user:password@localhost:5432/db",
 	Brokers:       []string{"localhost:29092"},
 	Topic:         "orders",
@@ -18,4 +19,9 @@ var DefaultConfig = AppConfig{
 	StaticDir:     "static/",
 	IndexTemplate: "templates/index.html",
 	Addr:          ":8000",
+	PreloadLimit:  2,
+}
+
+func LoadConfig() AppConfig {
+	return defaultConfig
 }

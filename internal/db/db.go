@@ -75,3 +75,12 @@ type DB interface {
 
 	Close() error
 }
+
+type Cachable interface {
+	GetUIDs(ctx context.Context, limit int32) ([]string, error)
+}
+
+type CachableDB interface {
+	Cachable
+	DB
+}
