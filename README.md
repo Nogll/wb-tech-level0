@@ -37,3 +37,7 @@ go run cmd/app/main.go
 `http://kafka` с портом `9092`
 
 Через этот сервис можно отправлять сообщения в брокер
+
+## Демонстрация
+
+[Видео](https://drive.google.com/file/d/1lPzT9bvUOHim2tqhh-sSiZ4z_pfdRZus/view?usp=sharing)
