@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Просмотр заказов</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Просмотр заказов</h1>
+        <form id="searchForm">
+            <input name="uid" id="uidInput" placeholder="Введите UID заказа">
+            <br>
+            <button type="submit">Найти заказ</button>
+        </form>
+
+        <div id="error" class="hidden error">
+            <p id="errorMessage"></p>
+        </div>
+
+        <div id="orderInfo" class="hidden">
+            <div class="order">
+                <h3>Order</h3>
+                <table>
+                    <tr>
+                        <td>UID заказа</td>
+                        <td id="orderUID"></td>
+                    </tr>
+                    <tr>
+                        <td>Трэк номер</td>
+                        <td id="trackNumber"></td>
+                    </tr>
+                    <tr>
+                        <td>Entry</td>
+                        <td id="entry"></td>
+                    </tr>
+                    <tr>
+                        <td>Locale</td>
+                        <td id="locale"></td>
+                    </tr>
+                    <tr>
+                        <td>Internal Signature</td>
+                        <td id="internalSignature"></td>
+                    </tr>
+                    <tr>
+                        <td>Customer ID</td>
+                        <td id="customerID"></td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Service</td>
+                        <td id="deliveryService"></td>
+                    </tr>
+                    <tr>
+                        <td>Shard Key</td>
+                        <td id="shardKey"></td>
+                    </tr>
+                    <tr>
+                        <td>SM ID</td>
+                        <td id="smID"></td>
+                    </tr>
+                    <tr>
+                        <td>Date Created</td>
+                        <td id="dateCreated"></td>
+                    </tr>
+                    <tr>
+                        <td>OOF Shard</td>
+                        <td id="oofShard"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="delivery">
+                <h3>Delivery</h3>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td id="deliveryName"></td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td id="deliveryPhone"></td>
+                    </tr>
+                    <tr>
+                        <td>Zip</td>
+                        <td id="deliveryZip"></td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td id="deliveryCity"></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td id="deliveryAddress"></td>
+                    </tr>
+                    <tr>
+                        <td>Region</td>
+                        <td id="deliveryRegion"></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td id="deliveryEmail"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="pay">
+                <h3>Payment</h3>
+                <table>
+                    <tr>
+                        <td>Транзакция</td>
+                        <td id="paymentTransaction"></td>
+                    </tr>
+                    <tr>
+                        <td>Request ID</td>
+                        <td id="paymentRequestID"></td>
+                    </tr>
+                    <tr>
+                        <td>Currency</td>
+                        <td id="paymentCurrency"></td>
+                    </tr>
+                    <tr>
+                        <td>Provider</td>
+                        <td id="paymentProvider"></td>
+                    </tr>
+                    <tr>
+                        <td>Amount</td>
+                        <td id="paymentAmount"></td>
+                    </tr>
+                    <tr>
+                        <td>Payment DT</td>
+                        <td id="paymentDT"></td>
+                    </tr>
+                    <tr>
+                        <td>Bank</td>
+                        <td id="paymentBank"></td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Cost</td>
+                        <td id="paymentDeliveryCost"></td>
+                    </tr>
+                    <tr>
+                        <td>Goods Total</td>
+                        <td id="paymentGoodsTotal"></td>
+                    </tr>
+                    <tr>
+                        <td>Custom Fee</td>
+                        <td id="paymentCustomFee"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="items">
+                <h3>Items</h3>
+                <div id="itemsContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
