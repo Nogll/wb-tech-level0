@@ -25,7 +25,9 @@ go run cmd/app/main.go
 
 ## Приложение
 
-По [http://localhost:8000/index.html](http://localhost:8000/index.html) можно открыть простой UI для просмотра заказов
+По [http://localhost:8000/index.html](http://localhost:8000/index.html) можно открыть простой UI для просмотра заказов, сделанный на шаблоне
+
+По [http://localhost:8000/static/indexjs.html](http://localhost:8000/static/indexjs.html) можно открыть простой UI для просмотра заказов, сделанные на JS скрипте
 
 По [http://localhost:8000/api/v1/orders?uid=1](http://localhost:8000/api/v1/orders?uid=1) можно получить json с информацией о заказе по UID
 
